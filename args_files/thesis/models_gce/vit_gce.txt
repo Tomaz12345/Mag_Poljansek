@@ -1,0 +1,53 @@
+# ViT gce configuration
+# Based on: An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale
+# (Dosovitskiy et al., ICLR 2021) - https://arxiv.org/abs/2010.11929
+# Segmentation head: UperNet on a 1/4-1/32 pyramid rebuilt by the multiscale neck.
+# Variant vit_small (~22M) is the size match for swin_tiny (~28M); the training
+# hyperparameters are copied from swin so ViT-vs-Swin isolates architecture.
+
+experiment_name=vit_gce
+
+# directories
+data_dir_train=data
+data_dir_val=data
+log_dir=logs/models_gce
+
+# settings
+val_freq=1000
+save_freq=0
+log_batch_freq=100
+enable_tensorboard_logging=False
+enable_timing=True
+
+# training (paper: AdamW, lr=6e-5, weight_decay=0.01, cosine decay with linear warmup)
+# optimizer is AdamW with differential LR (0.1x encoder, 1x decoder head)
+lr=0.00006
+weight_decay=0.01
+batch_size=16
+max_epochs=1
+num_steps=None
+
+# loss
+loss_type=generalized_cross_entropy
+gce_q=0.7
+
+# predict / inference settings
+data_dir=data
+preview_dir=logs/models_gce/vit_gce/preview
+analysis_dir=logs/models_gce/vit_gce/analysis
+
+# model (ViT-S/16; size-matched to Swin-T, decoder settings matched to Swin)
+model=vit
+variant=vit_small
+img_size=256
+patch_size=16
+mlp_ratio=4.0
+qkv_bias=True
+drop_path_rate=0.1
+vit_stem_mode=project
+vit_neck=multiscale
+decoder_type=upernet
+decoder_channels=512
+decoder_dropout=0.1
+use_pretrained=True
+pretrained_type=imagenet_21k

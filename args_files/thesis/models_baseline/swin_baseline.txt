@@ -1,0 +1,34 @@
+# Swin Transformer baseline configuration
+# Based on: Swin Transformer: Hierarchical Vision Transformer using Shifted Windows
+# (Liu et al., 2021) - https://arxiv.org/abs/2103.14030
+# Segmentation head: UperNet (used in paper for ADE20K benchmarks)
+
+experiment_name=swin_baseline
+
+# directories
+data_dir_train=data
+data_dir_val=data
+log_dir=logs/models_baseline
+
+# settings
+val_freq=1000
+save_freq=1000
+log_batch_freq=100
+enable_tensorboard_logging=False
+enable_timing=True
+
+# training (paper: AdamW, lr=6e-5, weight_decay=0.01, cosine decay with linear warmup)
+# optimizer is AdamW with differential LR (0.1x encoder, 1x decoder head)
+lr=0.00006
+weight_decay=0.01
+batch_size=16
+max_epochs=1
+
+# predict / inference settings
+data_dir=data
+preview_dir=logs/models_baseline/swin_baseline/preview
+analysis_dir=logs/models_baseline/swin_baseline/analysis
+
+# model (Swin-T paper defaults)
+model=swin
+drop_path_rate=0.2

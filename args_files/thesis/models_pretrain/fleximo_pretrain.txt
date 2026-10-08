@@ -1,0 +1,31 @@
+# FlexiMo pretrain configuration
+
+experiment_name=fleximo_pretrain
+
+# directories
+data_dir_train=data
+data_dir_val=data
+log_dir=logs/models_pretrain
+
+# settings
+val_freq=1000
+save_freq=0
+log_batch_freq=100
+enable_tensorboard_logging=False
+enable_timing=True
+
+# training
+lr=0.0001
+weight_decay=0.05
+batch_size=16
+max_epochs=1
+num_steps=None
+
+# predict / inference settings
+data_dir=data
+preview_dir=logs/models_pretrain/fleximo_pretrain/preview
+analysis_dir=logs/models_pretrain/fleximo_pretrain/analysis
+
+# model
+model=fleximo
+use_pretrained=True

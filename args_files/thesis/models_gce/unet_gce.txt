@@ -1,0 +1,35 @@
+# UNet GCE configuration
+# Loss: Generalized Cross Entropy (GCE), robust to noisy labels
+
+experiment_name=unet_gce
+
+# directories
+data_dir_train=data
+data_dir_val=data
+log_dir=logs/models_gce
+
+# settings
+val_freq=1000
+save_freq=1000
+log_batch_freq=100
+enable_tensorboard_logging=False
+enable_timing=True
+
+# training
+lr=0.001
+momentum=0.99
+weight_decay=0
+max_epochs=1
+lr_scheduler=exponential
+
+# loss
+loss_type=generalized_cross_entropy
+gce_q=0.7
+
+# predict / inference settings
+data_dir=data
+preview_dir=logs/models_gce/unet_gce/preview
+analysis_dir=logs/models_gce/unet_gce/analysis
+
+# model
+model=unet

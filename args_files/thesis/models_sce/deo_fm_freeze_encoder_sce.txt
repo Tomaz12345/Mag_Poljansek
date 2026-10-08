@@ -1,0 +1,64 @@
+# DEO-FM SCE configuration
+# Based on: Brewing Stronger Features: Dual-Teacher Distillation for Multispectral Earth Observation
+# (Wolf et al., CVPR 2026 Highlight) - https://arxiv.org/abs/2602.19863
+# Loss: Symmetric Cross Entropy (SCE), robust to noisy labels
+
+experiment_name=deo_fm_freeze_encoder_sce
+
+# directories
+data_dir_train=data
+data_dir_val=data
+log_dir=logs/models_sce
+
+# data — DEO-FM's native band set: the 10 Sentinel-2 bands it was pretrained on
+# (S2 HR + MR; the three 60 m atmospheric bands and S1 are excluded). get_ninputs
+# returns exactly 10, so deo_input_mode=auto routes straight to the multispectral
+# stem with no InputProjection. Contrast with the 15-channel full stack the other
+# models use.
+use_s2hr=True
+use_s2mr=True
+use_s2lr=False
+use_s1=False
+
+# settings
+val_freq=1000
+save_freq=0
+log_batch_freq=100
+enable_tensorboard_logging=False
+enable_timing=True
+
+# training (ViT fine-tuning convention: AdamW, lr=1e-4, weight_decay=0.05, cosine decay with warmup)
+# optimizer is AdamW with differential LR (0.1x encoder, 1x decoder head)
+lr=0.0001
+weight_decay=0.05
+batch_size=16
+max_epochs=1
+
+# loss
+loss_type=symmetric_cross_entropy
+sce_alpha=1.0
+sce_beta=1.0
+
+# predict / inference settings
+data_dir=data
+preview_dir=logs/models_sce/deo_fm_freeze_encoder_sce/preview
+analysis_dir=logs/models_sce/deo_fm_freeze_encoder_sce/analysis
+
+# model
+model=deo_fm
+variant=swin_b
+img_size=256
+patch_size=8
+deo_input_mode=auto
+decoder_type=upernet
+decoder_channels=512
+decoder_dropout=0.1
+encoder_lr_multiplier=0.1
+use_pretrained=True
+pretrained_path=SolaireTheSun/DEO
+
+# head-only protocol — DEO paper Sec. 4.1 / App. B.2: "we fine-tune an UPerNet
+# segmentation head on top of a frozen backbone". Only the decoder receives
+# gradients; input_proj is nn.Identity here (10 input channels == the 10-channel
+# MS stem), so the decoder really is the only trainable module.
+freeze_encoder=True

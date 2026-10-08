@@ -1,0 +1,36 @@
+# UNet SCE configuration
+# Loss: Symmetric Cross Entropy (SCE), robust to noisy labels
+
+experiment_name=unet_sce
+
+# directories
+data_dir_train=data
+data_dir_val=data
+log_dir=logs/models_sce
+
+# settings
+val_freq=1000
+save_freq=1000
+log_batch_freq=100
+enable_tensorboard_logging=False
+enable_timing=True
+
+# training
+lr=0.001
+momentum=0.99
+weight_decay=0
+max_epochs=1
+lr_scheduler=exponential
+
+# loss
+loss_type=symmetric_cross_entropy
+sce_alpha=1.0
+sce_beta=1.0
+
+# predict / inference settings
+data_dir=data
+preview_dir=logs/models_sce/unet_sce/preview
+analysis_dir=logs/models_sce/unet_sce/analysis
+
+# model
+model=unet

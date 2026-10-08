@@ -1,0 +1,51 @@
+# DEO-FM freeze_encoder configuration
+
+experiment_name=deo_fm_freeze_encoder
+
+# directories
+data_dir_train=data
+data_dir_val=data
+log_dir=logs/models_freeze_encoder
+
+# data — DEO-FM's native band set: the 10 Sentinel-2 bands it was pretrained on
+# (S2 HR + MR; the three 60 m atmospheric bands and S1 are excluded). get_ninputs
+# returns exactly 10, so deo_input_mode=auto routes straight to the multispectral
+# stem with no InputProjection. Contrast with the 15-channel full stack the other
+# models use.
+use_s2hr=True
+use_s2mr=True
+use_s2lr=False
+use_s1=False
+
+# settings
+val_freq=1000
+save_freq=0
+log_batch_freq=100
+enable_tensorboard_logging=False
+enable_timing=True
+
+# training
+lr=0.0001
+weight_decay=0.05
+batch_size=16
+max_epochs=1
+num_steps=None
+
+# predict / inference settings
+data_dir=data
+preview_dir=logs/models_freeze_encoder/deo_fm_freeze_encoder/preview
+analysis_dir=logs/models_freeze_encoder/deo_fm_freeze_encoder/analysis
+
+# model
+model=deo_fm
+variant=swin_b
+img_size=256
+patch_size=8
+deo_input_mode=auto
+decoder_type=upernet
+decoder_channels=512
+decoder_dropout=0.1
+encoder_lr_multiplier=0.1
+use_pretrained=True
+pretrained_path=SolaireTheSun/DEO
+freeze_encoder=True

@@ -1,0 +1,81 @@
+experiment_name=reproducible_test_dinov2
+
+# directories - using relative paths for GitHub Actions
+data_dir_train=data_small
+dataset_val=sen12ms_holdout
+data_dir_val=data_small
+log_dir=logs
+
+# data
+use_s2hr=True
+use_s2mr=True
+use_s2lr=True
+use_s1=True
+no_savanna=True
+
+# settings
+seed=42
+val_freq=1
+save_freq=1
+log_freq=1
+log_level=INFO
+enable_timing=True
+
+# training - minimal settings for fast testing
+lr=0.01
+momentum=0.9
+weight_decay=5e-4
+batch_size=2
+workers=1
+max_epochs=1
+num_steps=5
+accumulation_steps=1
+continue_learning_from_previous=False
+
+# Predict / inference settings
+config_file=checkpoints/args.pkl
+checkpoint_file=checkpoints/final.pth
+score=True
+dataset=sen12ms_holdout
+data_dir=data_small
+out_dir=predictions
+preview_dir=None
+analysis_dir=analysis
+
+predict_subset_ratio=0.2
+
+# profiling - minimal for testing
+enable_profiling=false
+profile_steps=1
+
+# DINOv2 Model Configuration for Reproducible Test
+model=dinov2
+
+# Use small variant for testing (faster)
+variant=dinov2_small
+
+# Architecture (matches dinov2_small defaults)
+patch_size=14
+embed_dim=384
+depth=12
+num_heads=6
+mlp_ratio=4.0
+qkv_bias=True
+
+# Dropout
+drop_rate=0.0
+attn_drop_rate=0.0
+drop_path_rate=0.0
+
+# Decoder (use linear for speed in tests)
+decoder_type=linear
+decoder_channels=256
+decoder_dropout=0.1
+
+# No pretrained weights for testing
+use_pretrained=False
+pretrained_path=facebookresearch/dinov2
+
+# Fine-tuning settings
+freeze_encoder=False
+encoder_lr_multiplier=0.1

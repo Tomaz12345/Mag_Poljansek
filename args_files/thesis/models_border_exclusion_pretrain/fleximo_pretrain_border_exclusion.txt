@@ -1,0 +1,36 @@
+# FlexiMo baseline configuration
+# Based on: FlexiMo: A Flexible Remote Sensing Foundation Model
+# (Li et al., 2025) - https://arxiv.org/abs/2503.23844
+# Built on DOFA (Dynamic One-For-All):
+# (Xiong et al., 2024) - https://arxiv.org/abs/2403.15356
+
+experiment_name=fleximo_pretrain_border_exclusion
+
+# directories
+data_dir_train=data
+data_dir_val=data
+log_dir=logs/models_border_exclusion_pretrain
+
+# settings
+val_freq=1000
+save_freq=0
+log_batch_freq=100
+enable_tensorboard_logging=False
+enable_timing=True
+
+# training (ViT fine-tuning convention: AdamW, lr=1e-4, weight_decay=0.05, cosine decay with warmup)
+# optimizer is AdamW with differential LR (0.1x encoder, 1x decoder head)
+lr=0.0001
+weight_decay=0.05
+batch_size=16
+max_epochs=1
+
+# predict / inference settings
+data_dir=data
+preview_dir=logs/models_border_exclusion_pretrain/fleximo_pretrain_border_exclusion/preview
+analysis_dir=logs/models_border_exclusion_pretrain/fleximo_pretrain_border_exclusion/analysis
+
+# model
+model=fleximo
+border_exclusion=True
+use_pretrained=True

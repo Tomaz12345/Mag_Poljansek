@@ -1,0 +1,80 @@
+experiment_name=reproducible_test_deo_fm
+
+# directories - using relative paths for GitHub Actions
+data_dir_train=data_small
+dataset_val=sen12ms_holdout
+data_dir_val=data_small
+log_dir=logs
+
+# data — DEO-FM was pretrained on 10-channel S2 (no 60 m bands).
+# Setting s2hr+s2mr (no s2lr, no s1) matches the pretraining channel layout
+# exactly (10 channels), so the multispectral stem is used directly.
+use_s2hr=True
+use_s2mr=True
+use_s2lr=False
+use_s1=False
+no_savanna=True
+
+# settings
+seed=42
+val_freq=1
+save_freq=1
+log_freq=1
+log_level=INFO
+enable_timing=True
+
+# training - minimal settings for fast testing
+lr=0.01
+momentum=0.9
+weight_decay=5e-4
+batch_size=2
+workers=1
+max_epochs=1
+num_steps=5
+accumulation_steps=1
+continue_learning_from_previous=False
+
+# Predict / inference settings
+config_file=checkpoints/args.pkl
+checkpoint_file=checkpoints/final.pth
+score=True
+dataset=sen12ms_holdout
+data_dir=data_small
+out_dir=predictions
+preview_dir=None
+analysis_dir=analysis
+
+predict_subset_ratio=0.2
+
+# profiling - minimal for testing
+enable_profiling=false
+profile_steps=1
+
+# DEO-FM Model Configuration
+model=deo_fm
+
+# Backbone: "swin_b" (auto-downloads from HuggingFace) or "vit_base"
+# (manual download required from the project OneDrive — see CLAUDE.md).
+variant=swin_b
+
+# Architecture (used only by the vit_base variant)
+img_size=256
+patch_size=8
+
+# Input routing: auto picks RGB (n_channels=3) or MS (n_channels=10);
+# any other count is projected to 10 channels via the input projection.
+deo_input_mode=auto
+
+# Decoder
+decoder_type=upernet
+decoder_channels=512
+decoder_dropout=0.1
+
+# No pretrained weights for testing (set True to fetch from HuggingFace
+# at first run; cached afterwards in ~/.cache/huggingface).
+use_pretrained=False
+pretrained_path=SolaireTheSun/DEO
+
+# Fine-tuning settings
+freeze_encoder=False
+encoder_lr_multiplier=0.1

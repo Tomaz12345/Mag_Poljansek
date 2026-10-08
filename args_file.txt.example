@@ -1,0 +1,115 @@
+experiment_name=experiment
+
+# directories
+data_dir_train=None
+dataset_val=sen12ms_holdout
+data_dir_val=None
+log_dir=None
+
+# data
+use_s2hr=True
+use_s2mr=True
+use_s2lr=True
+use_s1=True
+no_savanna=True
+
+# settings
+seed=42
+val_freq=1000
+save_freq=1000
+log_freq=100
+log_batch_freq=1
+log_level=INFO
+
+# training
+lr=0.01
+momentum=0.9
+weight_decay=5e-4
+batch_size=32
+workers=4
+max_epochs=10
+num_steps=None
+accumulation_steps=None
+continue_learning_from_previous=False
+
+# Learning rate scheduler
+lr_scheduler=cosine
+lr_warmup_epochs=5
+lr_min=0.0
+lr_decay_rate=0.99
+
+# Gradual encoder unfreezing
+enable_gradual_unfreezing=False
+gradual_unfreeze_every_n=1
+gradual_unfreeze_unit=epochs
+
+# Loss function settings
+loss_type=cross_entropy
+focal_gamma=2.0
+focal_alpha=0.25
+gce_q=0.7
+sce_alpha=1.0
+sce_beta=1.0
+label_smoothing=0.0
+dice_smooth=1.0
+
+# Border exclusion
+border_exclusion=False
+border_exclusion_size=10
+
+# Noisy-label soft weighting
+enable_noisy_label_weighting=False
+noisy_label_warmup_steps=1000
+noisy_label_ema_alpha=0.9
+noisy_label_min_weight=0.2
+
+# Class weighting for handling class imbalance
+use_class_weights=False
+class_weight_method=effective
+class_weight_beta=0.9999
+use_precomputed_class_weights=True
+
+# Predict / inference settings
+config_file=checkpoints/args.pkl
+checkpoint_file=checkpoints/final.pth
+score=True
+dataset=dfc2020_test
+data_dir=None
+out_dir=predictions
+preview_dir=None
+analysis_dir=None
+predict_subset_ratio=1
+
+# profiling
+enable_profiling=true
+profile_steps=10
+profile_output_dir=None
+
+# Timing configuration
+enable_timing=false
+
+# TensorBoard logging
+enable_tensorboard_logging=True
+tensorboard_log_freq=100
+log_model_graph=True
+log_distributions=True
+log_batch_images=True
+log_weight_histograms=False
+log_gradient_histograms=False
+log_learning_rate=True
+log_gradient_norm=True
+
+# cleanup
+cleanup_after_run=False
+
+# Normalization mode
+normalization_mode=global
+
+# reporting
+report_format=all
+report_num_samples=5
+
+# tensorboard
+tensorboard_port=6006
+
+model=deeplabv3+

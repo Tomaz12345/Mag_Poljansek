@@ -1,0 +1,31 @@
+# Swin Transformer pretrain configuration
+
+experiment_name=swin_pretrain
+
+# directories
+data_dir_train=data
+data_dir_val=data
+log_dir=logs/models_pretrain
+
+# settings
+val_freq=1000
+save_freq=1000
+log_batch_freq=100
+enable_tensorboard_logging=False
+enable_timing=True
+
+# training
+lr=0.00006
+weight_decay=0.01
+batch_size=16
+max_epochs=1
+num_steps=None
+
+# predict / inference settings
+data_dir=data
+preview_dir=logs/models_pretrain/swin_pretrain/preview
+analysis_dir=logs/models_pretrain/swin_pretrain/analysis
+
+# model
+model=swin
+use_pretrained=True

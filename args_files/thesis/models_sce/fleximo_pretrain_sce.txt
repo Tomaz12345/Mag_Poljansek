@@ -1,0 +1,41 @@
+# FlexiMo SCE configuration
+# Based on: FlexiMo: A Flexible Remote Sensing Foundation Model
+# (Li et al., 2025) - https://arxiv.org/abs/2503.23844
+# Built on DOFA (Dynamic One-For-All):
+# (Xiong et al., 2024) - https://arxiv.org/abs/2403.15356
+# Loss: Symmetric Cross Entropy (SCE), robust to noisy labels
+
+experiment_name=fleximo_pretrain_sce
+
+# directories
+data_dir_train=data
+data_dir_val=data
+log_dir=logs/models_sce
+
+# settings
+val_freq=1000
+save_freq=0
+log_batch_freq=100
+enable_tensorboard_logging=False
+enable_timing=True
+
+# training (ViT fine-tuning convention: AdamW, lr=1e-4, weight_decay=0.05, cosine decay with warmup)
+# optimizer is AdamW with differential LR (0.1x encoder, 1x decoder head)
+lr=0.0001
+weight_decay=0.05
+batch_size=16
+max_epochs=1
+
+# loss
+loss_type=symmetric_cross_entropy
+sce_alpha=1.0
+sce_beta=1.0
+
+# predict / inference settings
+data_dir=data
+preview_dir=logs/models_sce/fleximo_pretrain_sce/preview
+analysis_dir=logs/models_sce/fleximo_pretrain_sce/analysis
+
+# model
+model=fleximo
+use_pretrained=True

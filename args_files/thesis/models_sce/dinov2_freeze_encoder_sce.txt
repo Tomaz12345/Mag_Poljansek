@@ -1,0 +1,36 @@
+# DINOv2 linear probe — sce
+
+experiment_name=dinov2_freeze_encoder_sce
+
+# directories
+data_dir_train=data
+data_dir_val=data
+log_dir=logs/models_sce
+
+# settings
+val_freq=1000
+save_freq=0
+log_batch_freq=100
+enable_tensorboard_logging=False
+enable_timing=True
+
+# training
+lr=0.0001
+weight_decay=0.05
+batch_size=16
+max_epochs=1
+num_steps=None
+loss_type=symmetric_cross_entropy
+sce_alpha=1.0
+sce_beta=1.0
+
+# predict / inference settings
+data_dir=data
+preview_dir=logs/models_sce/dinov2_freeze_encoder_sce/preview
+analysis_dir=logs/models_sce/dinov2_freeze_encoder_sce/analysis
+
+# model
+model=dinov2
+use_pretrained=True
+freeze_encoder=True
+decoder_type=linear

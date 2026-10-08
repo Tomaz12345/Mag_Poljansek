@@ -1,0 +1,92 @@
+.
+|-- tree.txt
+|-- ROIs1970_fall
+|  |-- s1_120
+|  |  |-- ROIs1970_fall_s1_120_p45.tif
+|  |  |-- ROIs1970_fall_s1_120_p210.tif
+|  |  |-- ROIs1970_fall_s1_120_p671.tif
+|  |-- s1_102
+|  |  |-- ROIs1970_fall_s1_102_p617.tif
+|  |  |-- ROIs1970_fall_s1_102_p276.tif
+|  |-- lc_102
+|  |  |-- ROIs1970_fall_lc_102_p276.tif
+|  |  |-- ROIs1970_fall_lc_102_p617.tif
+|  |-- s2_102
+|  |  |-- ROIs1970_fall_s2_102_p276.tif
+|  |  |-- ROIs1970_fall_s2_102_p617.tif
+|  |-- lc_120
+|  |  |-- ROIs1970_fall_lc_120_p210.tif
+|  |  |-- ROIs1970_fall_lc_120_p671.tif
+|  |  |-- ROIs1970_fall_lc_120_p45.tif
+|  |-- s2_120
+|  |  |-- ROIs1970_fall_s2_120_p45.tif
+|  |  |-- ROIs1970_fall_s2_120_p210.tif
+|  |  |-- ROIs1970_fall_s2_120_p671.tif
+|-- ROIs1158_spring
+|  |-- lc_63
+|  |  |-- ROIs1158_spring_lc_63_p263.tif
+|  |  |-- ROIs1158_spring_lc_63_p196.tif
+|  |  |-- ROIs1158_spring_lc_63_p631.tif
+|  |-- s2_63
+|  |  |-- ROIs1158_spring_s2_63_p263.tif
+|  |  |-- ROIs1158_spring_s2_63_p196.tif
+|  |  |-- ROIs1158_spring_s2_63_p631.tif
+|  |-- s1_63
+|  |  |-- ROIs1158_spring_s1_63_p263.tif
+|  |  |-- ROIs1158_spring_s1_63_p196.tif
+|  |  |-- ROIs1158_spring_s1_63_p631.tif
+|  |-- s2_66
+|  |  |-- ROIs1158_spring_s2_66_p310.tif
+|  |  |-- ROIs1158_spring_s2_66_p466.tif
+|  |-- lc_66
+|  |  |-- ROIs1158_spring_lc_66_p310.tif
+|  |  |-- ROIs1158_spring_lc_66_p466.tif
+|  |-- s1_66
+|  |  |-- ROIs1158_spring_s1_66_p466.tif
+|  |  |-- ROIs1158_spring_s1_66_p310.tif
+|-- ROIs2017_winter
+|  |-- s1_115
+|  |  |-- ROIs2017_winter_s1_115_p288.tif
+|  |  |-- ROIs2017_winter_s1_115_p638.tif
+|  |-- s1_64
+|  |  |-- ROIs2017_winter_s1_64_p644.tif
+|  |  |-- ROIs2017_winter_s1_64_p83.tif
+|  |  |-- ROIs2017_winter_s1_64_p52.tif
+|  |-- s2_64
+|  |  |-- ROIs2017_winter_s2_64_p83.tif
+|  |  |-- ROIs2017_winter_s2_64_p52.tif
+|  |  |-- ROIs2017_winter_s2_64_p644.tif
+|  |-- lc_64
+|  |  |-- ROIs2017_winter_lc_64_p83.tif
+|  |  |-- ROIs2017_winter_lc_64_p52.tif
+|  |  |-- ROIs2017_winter_lc_64_p644.tif
+|  |-- s2_115
+|  |  |-- ROIs2017_winter_s2_115_p638.tif
+|  |  |-- ROIs2017_winter_s2_115_p288.tif
+|  |-- lc_115
+|  |  |-- ROIs2017_winter_lc_115_p638.tif
+|  |  |-- ROIs2017_winter_lc_115_p288.tif
+|-- ROIs1868_summer
+|  |-- s1_43
+|  |  |-- ROIs1868_summer_s1_43_p841.tif
+|  |  |-- ROIs1868_summer_s1_43_p919.tif
+|  |  |-- ROIs1868_summer_s1_43_p73.tif
+|  |-- lc_33
+|  |  |-- ROIs1868_summer_lc_33_p115.tif
+|  |  |-- ROIs1868_summer_lc_33_p84.tif
+|  |-- s2_33
+|  |  |-- ROIs1868_summer_s2_33_p84.tif
+|  |  |-- ROIs1868_summer_s2_33_p115.tif
+|  |-- s2_43
+|  |  |-- ROIs1868_summer_s2_43_p919.tif
+|  |  |-- ROIs1868_summer_s2_43_p841.tif
+|  |  |-- ROIs1868_summer_s2_43_p73.tif
+|  |-- lc_43
+|  |  |-- ROIs1868_summer_lc_43_p841.tif
+|  |  |-- ROIs1868_summer_lc_43_p919.tif
+|  |  |-- ROIs1868_summer_lc_43_p73.tif
+|  |-- s1_33
+|  |  |-- ROIs1868_summer_s1_33_p84.tif
+|  |  |-- ROIs1868_summer_s1_33_p115.tif
+|-- DFC_Public_Dataset
+|-- notes.txt

@@ -1,0 +1,32 @@
+# UNet baseline configuration
+
+experiment_name=unet_border_exclusion_pretrain
+
+# directories
+data_dir_train=data
+data_dir_val=data
+log_dir=logs/models_border_exclusion_pretrain
+
+# settings
+val_freq=1000
+save_freq=1000
+log_batch_freq=100
+enable_tensorboard_logging=False
+enable_timing=True
+
+# training
+lr=0.001
+momentum=0.99
+weight_decay=0
+max_epochs=1
+lr_scheduler=exponential
+
+# predict / inference settings
+data_dir=data
+preview_dir=logs/models_border_exclusion_pretrain/unet_border_exclusion_pretrain/preview
+analysis_dir=logs/models_border_exclusion_pretrain/unet_border_exclusion_pretrain/analysis
+
+# model
+model=unet
+border_exclusion=True
+use_pretrained=True

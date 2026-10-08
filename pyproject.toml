@@ -1,0 +1,121 @@
+[project]
+name = "mag-poljansek"
+version = "0.1.0"
+description = "Code for the master's thesis \"Semantic Segmentation of Satellite Imagery with Coarse Labels: A Comparison of Deep Architectures and Foundation Models\""
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+  { name = "Tomaž Poljanšek", email = "tomazpoljansek12@gmail.com" },
+]
+keywords = ["dfc2020", "python"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+  "Operating System :: OS Independent",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+  "torch==2.6.0",
+  "matplotlib==3.10.7",
+  "numpy",
+  "tqdm",
+  "rasterio",
+  "pandas",
+  "scikit-learn",
+  "Pillow==12.0.0",
+  "pandera[all]>=0.22.3",
+  "scikit-image>=0.24.0",
+  "seaborn==0.13.2",
+  "torch-tb-profiler",
+  "transformers>=4.40.0",
+  "timm>=1.0.0",
+  "huggingface_hub>=0.23.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Tomaz12345/Mag_Poljansek"
+BugTracker = "https://github.com/Tomaz12345/Mag_Poljansek/issues"
+
+[project.optional-dependencies]
+reporting = [
+  "reportlab>=4.0.0",
+  "jinja2>=3.1.0",
+  "pygments>=2.18.0",
+]
+dev = [
+  "mypy==1.19.1",
+  "ruff==0.14.11",
+  "pre-commit==4.5.1",
+  "basedpyright==1.31.4",
+  "types-tqdm",
+  "pandas-stubs",
+  "types-Pillow",
+  "types-seaborn",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["src*"]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = false
+follow_imports = "normal"
+incremental = false
+
+# Useful strict-ish defaults (tune if too noisy):
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_return_any = true
+no_implicit_optional = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+disallow_any_generics = true
+
+[[tool.mypy.overrides]]
+module = ["sklearn.*", "tqdm.*", "rasterio.*", "pandas.*", "matplotlib.*", "PIL.*", "skimage.*", "weasyprint.*", "jinja2.*", "pygments.*", "reportlab.*", "torchvision.*", "timm.*", "huggingface_hub.*", "seaborn.*", "transformers.*"]
+ignore_missing_imports = true
+
+[tool.ruff]
+exclude = [
+    ".git",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".venv",
+    "__pycache__",
+    "build",
+    "dist",
+]
+line-length = 150
+indent-width = 4
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "W"]
+ignore = ["SIM105"]  # Allow try-except-pass pattern
+fixable = ["ALL"]
+unfixable = []
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.pyright]
+pythonVersion = "3.12"
+typeCheckingMode = "strict"
+reportMissingTypeStubs = "warning"
+reportUnknownMemberType = "warning"
+reportUnknownArgumentType = "warning"
+reportUnknownVariableType = "warning"
+reportUnknownParameterType = "warning"
+reportUnknownLambdaType = "warning"

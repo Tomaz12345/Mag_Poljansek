@@ -1,0 +1,39 @@
+# UNetFormer SCE configuration
+# Based on: UNetFormer: A UNet-like Transformer for Efficient Semantic Segmentation
+# of Remote Sensing Urban Scene Imagery
+# (Wang et al., 2022) - https://arxiv.org/abs/2109.08937
+# Loss: Symmetric Cross Entropy (SCE), robust to noisy labels
+
+experiment_name=unetformer_sce
+
+# directories
+data_dir_train=data
+data_dir_val=data
+log_dir=logs/models_sce
+
+# settings
+val_freq=1000
+save_freq=1000
+log_batch_freq=100
+enable_tensorboard_logging=False
+enable_timing=True
+
+# training (paper: AdamW, lr=1e-4, cosine decay with warmup)
+# optimizer is AdamW with differential LR (0.1x encoder, 1x decoder head)
+lr=0.0001
+weight_decay=0.01
+batch_size=16
+max_epochs=1
+
+# loss
+loss_type=symmetric_cross_entropy
+sce_alpha=1.0
+sce_beta=1.0
+
+# predict / inference settings
+data_dir=data
+preview_dir=logs/models_sce/unetformer_sce/preview
+analysis_dir=logs/models_sce/unetformer_sce/analysis
+
+# model
+model=unetformer

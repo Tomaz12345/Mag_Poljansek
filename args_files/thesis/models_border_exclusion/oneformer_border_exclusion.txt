@@ -1,0 +1,34 @@
+# OneFormer baseline configuration
+# Based on: OneFormer: One Transformer to Rule Universal Image Segmentation
+# (Jain et al., CVPR 2023) - https://arxiv.org/abs/2211.06220
+# Uses Swin-L backbone from HuggingFace as feature extractor with shared segmentation decoder
+
+experiment_name=oneformer_border_exclusion
+
+# directories
+data_dir_train=data
+data_dir_val=data
+log_dir=logs/models_border_exclusion
+
+# settings
+val_freq=1000
+save_freq=1000
+log_batch_freq=100
+enable_tensorboard_logging=False
+enable_timing=True
+
+# training (AdamW, lr=1e-4, weight_decay=0.05, cosine decay with warmup)
+# optimizer is AdamW with differential LR (0.1x encoder, 1x decoder head)
+lr=0.0001
+weight_decay=0.05
+batch_size=8
+max_epochs=1
+
+# predict / inference settings
+data_dir=data
+preview_dir=logs/models_border_exclusion/oneformer_border_exclusion/preview
+analysis_dir=logs/models_border_exclusion/oneformer_border_exclusion/analysis
+
+# model
+model=oneformer
+border_exclusion=True
